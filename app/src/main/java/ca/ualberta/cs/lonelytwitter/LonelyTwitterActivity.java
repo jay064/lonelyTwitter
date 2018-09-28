@@ -36,6 +36,12 @@ public class LonelyTwitterActivity extends Activity {
 
 	private Button saveButton;
 
+    public Button getClearButton() {
+        return clearButton;
+    }
+
+    private Button clearButton;
+
 	public EditText getBodyText() {
 		return bodyText;
 	}
@@ -64,6 +70,7 @@ public class LonelyTwitterActivity extends Activity {
 
 		bodyText = (EditText) findViewById(R.id.body); //view
 		saveButton = (Button) findViewById(R.id.save);
+		clearButton = (Button) findViewById(R.id.clear);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList); //view
 
 		saveButton.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +83,17 @@ public class LonelyTwitterActivity extends Activity {
 				saveInFile(); // model
 			}
 		});
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                //setResult(RESULT_OK);
+                tweets.clear();// controller
+
+                adapter.notifyDataSetChanged(); // view
+                saveInFile(); // model
+            }
+        });
 
 		oldTweetsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
