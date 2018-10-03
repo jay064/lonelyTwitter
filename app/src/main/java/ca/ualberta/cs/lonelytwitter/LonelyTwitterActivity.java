@@ -35,11 +35,7 @@ public class LonelyTwitterActivity extends Activity {
 	}
 
 	private Button saveButton;
-
-    public Button getClearButton() {
-        return clearButton;
-    }
-
+	
     private Button clearButton;
 
 	public EditText getBodyText() {
